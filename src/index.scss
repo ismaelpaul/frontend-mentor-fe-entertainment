@@ -1,9 +1,14 @@
+@use '/src/styles/abstracts' as a;
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: a.$outfit;
 }
-
+body {
+	background-color: a.$bg-color;
+}
 a {
 	color: inherit;
 	text-decoration: none;
