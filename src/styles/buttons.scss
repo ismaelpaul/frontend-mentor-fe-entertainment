@@ -1,0 +1,23 @@
+@use '/src/styles/abstracts' as a;
+
+.btn {
+	width: auto;
+	border: none;
+	padding: 1rem;
+	border-radius: 0.375rem;
+	font-size: 0.9rem;
+	font-weight: a.$extra-light;
+	margin: 1.5rem 0;
+	cursor: pointer;
+}
+
+.primary-button {
+	@extend .btn;
+	background-color: a.$primary-color;
+	color: a.$secondary-color;
+}
+.primary-button:hover {
+	@extend .btn;
+	background-color: a.$secondary-color;
+	color: a.$text-color-button-hover;
+}
