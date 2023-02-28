@@ -1,0 +1,44 @@
+@use '/src/styles/abstracts' as a;
+
+.navContainer {
+	display: flex;
+	background-color: a.$bg-color-card;
+	justify-content: space-between;
+	align-items: center;
+	height: 3.5rem;
+	padding: 0 1rem;
+
+	.logo {
+		img {
+			width: 1.56rem;
+		}
+	}
+	.navItems {
+		display: flex;
+		flex-grow: 1;
+		justify-content: center;
+		gap: 1.5rem;
+
+		.icon,
+		.iconActive {
+			svg {
+				transform: scale(0.8);
+			}
+		}
+		.iconActive {
+			path {
+				fill: a.$secondary-color;
+			}
+		}
+	}
+	.imageCropper {
+		width: 1.5rem;
+		height: 1.5rem;
+		overflow: hidden;
+		border-radius: 50%;
+		background-color: white;
+		border: 1px solid white;
+		display: flex;
+		justify-content: center;
+	}
+}
