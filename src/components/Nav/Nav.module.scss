@@ -9,6 +9,7 @@
 	padding: 0 1rem;
 
 	.logo {
+		display: flex;
 		img {
 			width: 1.56rem;
 		}
@@ -23,6 +24,7 @@
 		.iconActive {
 			svg {
 				transform: scale(0.8);
+				display: flex;
 			}
 		}
 		.iconActive {
