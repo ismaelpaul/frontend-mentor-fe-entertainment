@@ -15,14 +15,7 @@ export const NavItems = ({ item }: Item) => {
 
 	return (
 		<NavLink className={activeSublink} to={item.path}>
-			{item.icon && (
-				<>{item.icon}</>
-				// <img
-				// 	className={styles.icon}
-				// 	src={item.icon}
-				// 	alt={item.title + ' icon'}
-				// />
-			)}
+			{item.icon && <span>{item.icon}</span>}
 		</NavLink>
 	);
 };
