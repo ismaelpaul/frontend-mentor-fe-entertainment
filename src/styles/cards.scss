@@ -1,13 +1,13 @@
 @use '/src/styles/abstracts' as a;
 
 .card {
-	background-color: a.$bg-color-card;
 	border-radius: 0.625rem;
-	width: 85%;
 	padding: 1rem;
 }
 
 .auth-content {
+	background-color: a.$bg-color-card;
+	width: 85%;
 	h1 {
 		font-size: 2rem;
 	}
