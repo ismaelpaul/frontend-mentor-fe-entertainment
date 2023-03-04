@@ -1,0 +1,16 @@
+@use '/src/styles/abstracts' as a;
+
+.iconBackground {
+	width: 2rem;
+	height: 2rem;
+	overflow: hidden;
+	border-radius: 50%;
+	background-color: a.$bg-color-opacity-50;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	path {
+		stroke: a.$secondary-color;
+	}
+}
