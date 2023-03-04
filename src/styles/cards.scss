@@ -2,12 +2,12 @@
 
 .card {
 	border-radius: 0.625rem;
-	padding: 1rem;
 }
 
 .auth-content {
 	background-color: a.$bg-color-card;
 	width: 85%;
+	padding: 1rem;
 	h1 {
 		font-size: 2rem;
 	}
@@ -46,5 +46,12 @@
 			border-bottom: 1px solid a.$inactive-color;
 			padding-left: 1rem;
 		}
+	}
+}
+
+.trending {
+	position: relative;
+	img {
+		border-radius: 0.625rem;
 	}
 }
