@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import Recommended from '../../components/Recommended/Recommended';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Trending from '../../components/Trending/Trending';
 import { getEntertainments } from '../../redux/features/entertainment/entertainmentSlice';
@@ -18,6 +19,7 @@ const Home = () => {
 		<>
 			<SearchBar placeholder={placeholder} />
 			<Trending />
+			<Recommended />
 		</>
 	);
 };
