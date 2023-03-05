@@ -15,13 +15,13 @@
 	.infoWrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 0.3rem;
+		gap: 0.2rem;
 		position: absolute;
 		bottom: 0;
-		margin: 1rem;
+		margin: 1.2rem 1rem;
 		.info {
 			display: flex;
-			gap: 0.5rem;
+			gap: 0.45rem;
 			align-items: center;
 			p {
 				font-size: 0.75rem;
@@ -42,12 +42,15 @@
 	}
 	img {
 		width: 15rem;
+		height: 8.75rem;
 	}
 }
-section {
+.trending {
 	margin: 1rem;
 	h1 {
 		color: a.$secondary-color;
+		font-size: 1.25rem;
+		font-weight: a.$extra-light;
 		margin: 1rem 0;
 	}
 }
