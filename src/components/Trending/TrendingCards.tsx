@@ -5,7 +5,7 @@ import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import { moviesIcon, tvSeriesIcon } from '../../data/icons';
 import styles from './Trending.module.scss';
 
-type Entertainment = {
+export type Entertainment = {
 	_id: string;
 	title: string;
 	category: string;
