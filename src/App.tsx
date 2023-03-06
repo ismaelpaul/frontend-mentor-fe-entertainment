@@ -3,6 +3,8 @@ import Nav from './components/Nav/Nav';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import Home from './pages/Home/Home';
+import MoviesPage from './pages/Movies/MoviesPage';
+import TvSeriesPage from './pages/TvSeries/TvSeriesPage';
 
 function App() {
 	return (
@@ -14,6 +16,22 @@ function App() {
 				element={
 					<Nav>
 						<Home />
+					</Nav>
+				}
+			></Route>
+			<Route
+				path="/movies"
+				element={
+					<Nav>
+						<MoviesPage />
+					</Nav>
+				}
+			></Route>
+			<Route
+				path="/tv-series"
+				element={
+					<Nav>
+						<TvSeriesPage />
 					</Nav>
 				}
 			></Route>
