@@ -3,27 +3,8 @@ import { moviesIcon, tvSeriesIcon } from '../../data/icons';
 import { RootState } from '../../redux/store';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import Card from '../Card/Card';
-import styles from './Recommended.module.scss';
-
-type Entertainment = {
-	_id: string;
-	title: string;
-	category: string;
-	isTrending: boolean;
-	year: number;
-	rating: string;
-	thumbnail: {
-		regular: {
-			large: string;
-			medium: string;
-			small: string;
-		};
-		trending: {
-			large: string;
-			small: string;
-		};
-	};
-};
+import '../../styles/cards.scss';
+import { Entertainment } from '../Trending/TrendingCards';
 
 const RecommendedCards = () => {
 	const { entertainments } = useSelector(
@@ -31,17 +12,17 @@ const RecommendedCards = () => {
 	);
 
 	return (
-		<div className={styles.infoContainer}>
+		<div className="infoContainer">
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (!entertainment.isTrending) {
 					return (
 						<Card cardClass="recommended" key={index}>
-							<span className={styles.bookmarkIcon}>
+							<span className="bookmarkIcon">
 								<BookmarkIcon />
 							</span>
 							<img src={entertainment.thumbnail.regular.small} />
-							<div className={styles.infoWrapper}>
-								<div className={styles.info}>
+							<div className="infoWrapper">
+								<div className="info">
 									<p>{entertainment.year}</p>
 									<span>•</span>
 									{entertainment.category === 'Movie' ? (
@@ -53,7 +34,7 @@ const RecommendedCards = () => {
 									<span>•</span>
 									<p>{entertainment.rating}</p>
 								</div>
-								<div className={styles.title}>
+								<div className="title">
 									<p>{entertainment.title}</p>
 								</div>
 							</div>
