@@ -20,16 +20,12 @@ export const getAllEntertainments = async () => {
 
 export const getAllBookmarkeds = async () => {
 	const response = await entertainmentApi.get('/bookmarks');
-	console.log(response.data, '<<< response api getAllBookmarkeds');
 
 	return response.data;
 };
 
 export const addBookmark = async (newBookmark: NewBookmark) => {
-	console.log(newBookmark, 'newBookmark api');
-
 	const response = await entertainmentApi.post('/bookmarks', newBookmark);
-	console.log(response, '<<< response addbookmark');
 
 	return response.data;
 };
