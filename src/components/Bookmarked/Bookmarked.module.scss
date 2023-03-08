@@ -1,0 +1,11 @@
+@use '/src/styles/abstracts' as a;
+
+.bookmarked {
+	margin: 1rem;
+	h1 {
+		color: a.$secondary-color;
+		font-size: 1.25rem;
+		font-weight: a.$extra-light;
+		margin: 1.5rem 0;
+	}
+}
