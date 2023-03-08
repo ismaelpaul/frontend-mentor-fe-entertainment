@@ -1,9 +1,15 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../redux/store';
 import Card from '../Card/Card';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import { moviesIcon, tvSeriesIcon } from '../../data/icons';
 import styles from './Trending.module.scss';
+import { FC } from 'react';
+import {
+	addNewBookmark,
+	getEntertainment,
+	NewBookmark,
+} from '../../redux/features/entertainment/entertainmentSlice';
 
 export type Entertainment = {
 	_id: string;
@@ -25,10 +31,21 @@ export type Entertainment = {
 	};
 };
 
-const TrendingCards = () => {
+const TrendingCards: FC = () => {
+	const dispatch = useDispatch<AppDispatch>();
+
 	const { entertainments } = useSelector(
 		(state: RootState) => state.entertainments
 	);
+
+	const newBookmark = useSelector(
+		(state: RootState) => state.entertainments.singleEntertainment
+	);
+
+	const handleBookmarking = async (id: string, newBookmark: NewBookmark) => {
+		await dispatch(getEntertainment(id));
+		await dispatch(addNewBookmark(newBookmark));
+	};
 
 	return (
 		<div className={styles.infoContainer}>
@@ -36,7 +53,12 @@ const TrendingCards = () => {
 				if (entertainment.isTrending) {
 					return (
 						<Card cardClass="trending" key={index}>
-							<span className={styles.bookmarkIcon}>
+							<span
+								className={styles.bookmarkIcon}
+								onClick={() => {
+									handleBookmarking(entertainment._id, newBookmark);
+								}}
+							>
 								<BookmarkIcon />
 							</span>
 							<div className={styles.infoWrapper}>
