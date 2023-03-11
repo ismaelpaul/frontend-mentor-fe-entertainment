@@ -46,11 +46,46 @@
 	}
 }
 .trending {
-	margin: 1rem;
+	margin: 1rem 0 1rem 1rem;
 	h1 {
 		color: a.$secondary-color;
 		font-size: 1.25rem;
 		font-weight: a.$extra-light;
 		margin: 1.5rem 0;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.infoContainer {
+		gap: 2.5rem;
+		.bookmarkIcon {
+			margin: 1rem;
+		}
+		.infoWrapper {
+			margin: 1.5rem 1.3rem;
+			.info {
+				gap: 0.5rem;
+
+				p {
+					font-size: 0.938rem;
+				}
+			}
+			.title {
+				p {
+					font-size: 1.5rem;
+				}
+			}
+		}
+		img {
+			width: 29.375rem;
+			height: 14.375rem;
+		}
+	}
+	.trending {
+		margin: 1.563rem 0 1.563rem 1.563rem;
+		h1 {
+			font-size: 2rem;
+			margin: 1.563rem 0;
+		}
 	}
 }
