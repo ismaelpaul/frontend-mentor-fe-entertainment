@@ -47,3 +47,9 @@ export const loginUser = async (userData: UserData) => {
 
 	return response.data;
 };
+
+export const getLoginStatus = async () => {
+	const response = await entertainmentApi.get('/user//loggedin');
+
+	return response.data;
+};
