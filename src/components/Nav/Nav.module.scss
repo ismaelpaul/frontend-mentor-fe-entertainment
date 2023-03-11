@@ -44,3 +44,31 @@
 		justify-content: center;
 	}
 }
+
+@media screen and (min-width: 768px) {
+	.navContainer {
+		margin: 1.438rem 1.563rem;
+		border-radius: 0.625rem;
+		padding: 0 1.5rem;
+		height: 4.5rem;
+		.logo {
+			img {
+				width: 2rem;
+			}
+		}
+		.navItems {
+			gap: 2rem;
+			.icon,
+			.iconActive {
+				svg {
+					transform: scale(0.9);
+					display: flex;
+				}
+			}
+		}
+		.imageCropper {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+}
