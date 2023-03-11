@@ -78,7 +78,7 @@ const TrendingCards: FC = () => {
 									<p>{entertainment.title}</p>
 								</div>
 							</div>
-							<img src={entertainment.thumbnail.regular.small} />
+							<img src={entertainment.thumbnail.regular.large} />
 						</Card>
 					);
 				}
