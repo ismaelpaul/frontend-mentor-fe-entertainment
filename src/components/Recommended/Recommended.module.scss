@@ -9,3 +9,13 @@
 		margin: 1.5rem 0;
 	}
 }
+
+@media screen and (min-width: 768px) {
+	.recommended {
+		margin: 1.563rem;
+		h1 {
+			font-size: 2rem;
+			margin: 2.438rem 0 1.5rem 0;
+		}
+	}
+}
