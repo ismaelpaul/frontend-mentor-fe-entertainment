@@ -11,7 +11,7 @@ type NavProps = {
 
 const Nav = ({ children }: NavProps) => {
 	return (
-		<div>
+		<div className={styles.container}>
 			<div className={styles.navContainer}>
 				<div className={styles.logo}>
 					<img src={logo} alt="Logo" />
