@@ -1,74 +1,112 @@
 @use '/src/styles/abstracts' as a;
 
-.navContainer {
+.container {
 	display: flex;
-	background-color: a.$bg-color-card;
-	justify-content: space-between;
-	align-items: center;
-	height: 3.5rem;
-	padding: 0 1rem;
-
-	.logo {
-		display: flex;
-		img {
-			width: 1.56rem;
-		}
-	}
-	.navItems {
-		display: flex;
-		flex-grow: 1;
-		justify-content: center;
-		gap: 1.5rem;
-
-		.icon,
-		.iconActive {
-			svg {
-				transform: scale(0.8);
-				display: flex;
-			}
-		}
-		.iconActive {
-			path {
-				fill: a.$secondary-color;
-			}
-		}
-	}
-	.imageCropper {
-		width: 1.5rem;
-		height: 1.5rem;
-		overflow: hidden;
-		border-radius: 50%;
-		background-color: white;
-		border: 1px solid white;
-		display: flex;
-		justify-content: center;
-	}
-}
-
-@media screen and (min-width: 768px) {
+	flex-direction: column;
 	.navContainer {
-		margin: 1.438rem 1.563rem;
-		border-radius: 0.625rem;
-		padding: 0 1.5rem;
-		height: 4.5rem;
+		display: flex;
+		background-color: a.$bg-color-card;
+		justify-content: space-between;
+		align-items: center;
+		height: 3.5rem;
+		padding: 0 1rem;
+
 		.logo {
+			display: flex;
 			img {
-				width: 2rem;
+				width: 1.56rem;
 			}
 		}
 		.navItems {
-			gap: 2rem;
+			display: flex;
+			flex-grow: 1;
+			justify-content: center;
+			gap: 1.5rem;
+
 			.icon,
 			.iconActive {
 				svg {
-					transform: scale(0.9);
+					transform: scale(0.8);
 					display: flex;
+				}
+			}
+			.iconActive {
+				path {
+					fill: a.$secondary-color;
 				}
 			}
 		}
 		.imageCropper {
-			width: 2rem;
-			height: 2rem;
+			width: 1.5rem;
+			height: 1.5rem;
+			overflow: hidden;
+			border-radius: 50%;
+			background-color: white;
+			border: 1px solid white;
+			display: flex;
+			justify-content: center;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.container {
+		.navContainer {
+			margin: 1.438rem 1.563rem;
+			border-radius: 0.625rem;
+			padding: 0 1.5rem;
+			height: 4.5rem;
+			.logo {
+				img {
+					width: 2rem;
+				}
+			}
+			.navItems {
+				gap: 2rem;
+				.icon,
+				.iconActive {
+					svg {
+						transform: scale(0.9);
+					}
+				}
+			}
+			.imageCropper {
+				width: 2rem;
+				height: 2rem;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.container {
+		flex-direction: row;
+
+		.navContainer {
+			height: 60rem;
+			width: 6rem;
+			flex-direction: column;
+			margin: 2rem;
+			flex-shrink: 0;
+			padding: 2rem 0;
+			gap: 4.688rem;
+
+			.navItems {
+				gap: 2.5rem;
+				flex-direction: column;
+				flex-grow: 0;
+				.icon,
+				.iconActive {
+					svg {
+						transform: scale(1);
+					}
+				}
+			}
+			.imageCropper {
+				margin-top: auto;
+				width: 2.5rem;
+				height: 2.5rem;
+			}
 		}
 	}
 }
