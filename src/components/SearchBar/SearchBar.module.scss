@@ -9,11 +9,16 @@
 		display: flex;
 	}
 	input[type='text'] {
+		color: a.$secondary-color;
+		caret-color: a.$primary-color;
 		background-color: transparent;
 		border: none;
 		width: 100%;
 		font-size: 1rem;
 		font-weight: a.$extra-light;
+	}
+	input[type='text']:focus {
+		outline: none;
 	}
 }
 
