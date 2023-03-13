@@ -25,12 +25,19 @@
 @media screen and (min-width: 768px) {
 	.searchContainer {
 		gap: 1.5rem;
-		margin: 2.063rem 1.3rem;
+		margin: 1.375rem 1.3rem;
 		svg {
 			transform: none;
 		}
 		input[type='text'] {
 			font-size: 1.5rem;
 		}
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.searchContainer {
+		gap: 1.5rem;
+		margin: 4rem 0 2.125rem 0;
 	}
 }
