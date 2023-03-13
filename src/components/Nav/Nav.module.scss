@@ -52,7 +52,7 @@
 @media screen and (min-width: 768px) {
 	.container {
 		.navContainer {
-			margin: 1.438rem 1.563rem;
+			margin: 1.438rem 1.563rem 0 1.563rem;
 			border-radius: 0.625rem;
 			padding: 0 1.5rem;
 			height: 4.5rem;
@@ -90,6 +90,7 @@
 			flex-shrink: 0;
 			padding: 2rem 0;
 			gap: 4.688rem;
+			border-radius: 1.25rem;
 
 			.navItems {
 				gap: 2.5rem;
