@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../redux/features/auth/authSlice';
-import entertainmentReducer from '../redux/features/entertainment/entertainmentSlice';
+import authReducer from './features/auth/authSlice';
+import entertainmentReducer from './features/entertainment/entertainmentSlice';
+import filterReducer from './features/entertainment/filterSlice';
 
 export const store = configureStore({
 	reducer: {
 		auth: authReducer,
 		entertainments: entertainmentReducer,
+		filter: filterReducer,
 	},
 });
 
