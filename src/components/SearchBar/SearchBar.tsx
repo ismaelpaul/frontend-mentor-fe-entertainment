@@ -1,7 +1,10 @@
+import { ChangeEvent } from 'react';
 import styles from './SearchBar.module.scss';
 
-type Placeholder = {
+type SearchBar = {
 	placeholder: string;
+	search: string;
+	handleSearch: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const searchIcon = (
@@ -12,11 +15,16 @@ const searchIcon = (
 		/>
 	</svg>
 );
-const SearchBar = ({ placeholder }: Placeholder) => {
+const SearchBar = ({ placeholder, search, handleSearch }: SearchBar) => {
 	return (
 		<div className={styles.searchContainer}>
 			{searchIcon}
-			<input type="text" placeholder={placeholder} />
+			<input
+				type="text"
+				placeholder={placeholder}
+				value={search}
+				onChange={(e) => handleSearch(e)}
+			/>
 		</div>
 	);
 };
