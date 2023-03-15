@@ -6,6 +6,7 @@ import {
 	NewBookmark,
 } from '../../redux/features/entertainment/entertainmentSlice';
 import {
+	selectFilteredBookmarks,
 	selectFilteredEntertainments,
 	selectFilteredMovies,
 	selectFilteredTvSeries,
@@ -18,9 +19,9 @@ import '../../styles/cards.scss';
 
 const FilteredCards = () => {
 	const filteredEntertainments = useSelector(selectFilteredEntertainments);
-
 	const filteredMovies = useSelector(selectFilteredMovies);
 	const filteredTvSeries = useSelector(selectFilteredTvSeries);
+	const filteredBookmarks = useSelector(selectFilteredBookmarks);
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -119,7 +120,11 @@ const FilteredCards = () => {
 										<p>{entertainment.year}</p>
 										<span>•</span>
 
-										<span>{tvSeriesIcon} </span>
+										{entertainment.category === 'Movie' ? (
+											<span>{moviesIcon} </span>
+										) : (
+											<span>{tvSeriesIcon} </span>
+										)}
 
 										<p>{entertainment.category}</p>
 										<span>•</span>
@@ -127,6 +132,42 @@ const FilteredCards = () => {
 									</div>
 									<div className="title">
 										<p>{entertainment.title}</p>
+									</div>
+								</div>
+							</Card>
+						);
+				  })
+				: null}
+			{path === '/bookmarked'
+				? filteredBookmarks.map((bookmark: Entertainment, index) => {
+						return (
+							<Card cardClass="tv-series" key={index}>
+								<span
+									className="bookmarkIcon"
+									onClick={() => {
+										handleBookmarking(bookmark._id, newBookmark);
+									}}
+								>
+									<BookmarkIcon />
+								</span>
+								<img src={bookmark.thumbnail.regular.small} />
+								<div className="infoWrapper">
+									<div className="info">
+										<p>{bookmark.year}</p>
+										<span>•</span>
+
+										{bookmark.category === 'Movie' ? (
+											<span>{moviesIcon} </span>
+										) : (
+											<span>{tvSeriesIcon} </span>
+										)}
+
+										<p>{bookmark.category}</p>
+										<span>•</span>
+										<p>{bookmark.rating}</p>
+									</div>
+									<div className="title">
+										<p>{bookmark.title}</p>
 									</div>
 								</div>
 							</Card>
