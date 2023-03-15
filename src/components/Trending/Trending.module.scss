@@ -87,11 +87,17 @@
 			font-size: 2rem;
 			margin: 1.563rem 0;
 		}
+		.trendingContainer {
+			max-width: 94vw;
+		}
 	}
 }
 
 @media screen and (min-width: 1440px) {
 	.trending {
 		margin: 2.125rem 0;
+		.trendingContainer {
+			max-width: 86vw;
+		}
 	}
 }
