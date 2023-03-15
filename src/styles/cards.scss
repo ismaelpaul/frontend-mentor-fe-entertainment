@@ -123,6 +123,8 @@
 		row-gap: 1.5rem;
 		.bookmarkIcon {
 			margin: 1rem;
+			z-index: 2;
+			cursor: pointer;
 		}
 		img {
 			width: 13.75rem;
@@ -151,6 +153,13 @@
 		grid-template-columns: repeat(4, 17.5rem);
 		gap: 2.5rem;
 		row-gap: 2rem;
+		.playIcon {
+			display: none;
+		}
+		.playIconOnHover {
+			display: block;
+		}
+
 		img {
 			width: 17.5rem;
 			height: 10.875rem;
