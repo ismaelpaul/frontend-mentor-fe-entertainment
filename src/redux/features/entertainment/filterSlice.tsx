@@ -5,6 +5,7 @@ interface InitialState {
 		filteredEntertainments: [];
 		filteredMovies: [];
 		filteredTvSeries: [];
+		filteredBookmarks: [];
 	};
 }
 {
@@ -13,6 +14,7 @@ const initialState = {
 	filteredEntertainments: [],
 	filteredMovies: [],
 	filteredTvSeries: [],
+	filteredBookmarks: [],
 };
 
 const filterSlice = createSlice({
@@ -51,11 +53,23 @@ const filterSlice = createSlice({
 			});
 			state.filteredTvSeries = tempTvSeries;
 		},
+		FILTER_BOOKMARKEDS(state, action) {
+			const { bookmarkeds, search } = action.payload;
+
+			const tempBookmarkeds = bookmarkeds.filter((bookmark) => {
+				return bookmark.title.toLowerCase().includes(search.toLowerCase());
+			});
+			state.filteredBookmarks = tempBookmarkeds;
+		},
 	},
 });
 
-export const { FILTER_ENTERTAINMENTS, FILTER_MOVIES, FILTER_TV_SERIES } =
-	filterSlice.actions;
+export const {
+	FILTER_ENTERTAINMENTS,
+	FILTER_MOVIES,
+	FILTER_TV_SERIES,
+	FILTER_BOOKMARKEDS,
+} = filterSlice.actions;
 
 export const selectFilteredEntertainments = (state: InitialState) =>
 	state.filter.filteredEntertainments;
@@ -65,5 +79,8 @@ export const selectFilteredMovies = (state: InitialState) =>
 
 export const selectFilteredTvSeries = (state: InitialState) =>
 	state.filter.filteredTvSeries;
+
+export const selectFilteredBookmarks = (state: InitialState) =>
+	state.filter.filteredBookmarks;
 
 export default filterSlice.reducer;
