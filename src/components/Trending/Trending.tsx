@@ -12,7 +12,7 @@ const Trending = () => {
 			{isLoading ? (
 				<p>Loading...</p>
 			) : (
-				<div>
+				<div className={styles.trendingContainer}>
 					<TrendingCards />
 				</div>
 			)}
