@@ -14,3 +14,10 @@
 		stroke: a.$secondary-color;
 	}
 }
+
+.iconBackground:hover {
+	background-color: white;
+	path {
+		stroke: black;
+	}
+}
