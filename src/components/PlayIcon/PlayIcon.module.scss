@@ -1,32 +1,32 @@
 @use '/src/styles/abstracts' as a;
 
-.playIconOverlay {
+.playIconBackground {
+	background-color: rgba(255, 255, 255, 0.2);
+	width: 7.313rem;
+	height: 3rem;
+	border-radius: 1.781rem;
+	display: flex;
+	justify-content: center;
 	position: absolute;
-	background-color: rgba(0, 0, 0, 0.4);
-	width: 17.5rem;
-	height: 10.875rem;
-	border-radius: 0.625rem;
-	.playIconBackground {
-		background-color: rgba(255, 255, 255, 0.2);
-		width: 7.313rem;
-		height: 3rem;
-		border-radius: 1.781rem;
+	top: 5rem;
+	left: 11rem;
+	animation: fade-in 0.3s ease 0s 1 normal forwards;
+	cursor: pointer;
+	.playIcon {
 		display: flex;
-		justify-content: center;
-		position: absolute;
-		top: 4rem;
-		left: 5rem;
-		animation: fade-in 0.3s ease 0s 1 normal forwards;
-		.playIcon {
-			display: flex;
-			align-items: center;
-			gap: 1.188rem;
-			p {
-				color: a.$secondary-color;
-				font-size: 1.125rem;
-			}
+		align-items: center;
+		gap: 1.188rem;
+		p {
+			color: a.$secondary-color;
+			font-size: 1.125rem;
 		}
 	}
+}
+
+.playIconBackgroundSmallCards {
+	@extend .playIconBackground;
+	top: 4rem;
+	left: 5rem;
 }
 
 @keyframes fade-in {
