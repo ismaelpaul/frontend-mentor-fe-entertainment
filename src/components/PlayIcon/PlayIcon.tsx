@@ -9,10 +9,20 @@ const playIcon = (
 	</svg>
 );
 
-const PlayIcon = () => {
+interface IconProps {
+	elementHovered: string;
+}
+
+const PlayIcon = ({ elementHovered }: IconProps) => {
 	return (
 		<div className={styles.playIconOverlay}>
-			<div className={styles.playIconBackground}>
+			<div
+				className={
+					elementHovered === 'trending'
+						? styles.playIconBackground
+						: styles.playIconBackgroundSmallCards
+				}
+			>
 				<div className={styles.playIcon}>
 					{playIcon}
 					<p>Play</p>
