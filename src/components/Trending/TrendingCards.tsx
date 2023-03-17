@@ -25,7 +25,7 @@ export type Entertainment = {
 			medium: string;
 			small: string;
 		};
-		trending: {
+		trending?: {
 			large: string;
 			small: string;
 		};
