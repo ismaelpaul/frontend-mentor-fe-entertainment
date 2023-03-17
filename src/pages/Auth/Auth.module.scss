@@ -7,3 +7,11 @@
 		margin: 3.5rem;
 	}
 }
+
+@media screen and (min-width: 768px) {
+	.auth {
+		svg {
+			margin: 5rem;
+		}
+	}
+}
