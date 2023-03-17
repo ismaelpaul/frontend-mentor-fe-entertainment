@@ -3,7 +3,6 @@ import { moviesIcon, tvSeriesIcon } from '../../data/icons';
 import { RootState } from '../../redux/store';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import Card from '../Card/Card';
-import { Entertainment } from '../Trending/TrendingCards';
 import '../../styles/cards.scss';
 import { MouseEvent, useState } from 'react';
 import PlayIcon from '../PlayIcon/PlayIcon';
@@ -29,7 +28,7 @@ const BookmarkedCards = () => {
 
 	return (
 		<div className="infoContainer">
-			{bookmarkeds.map((bookmark: Entertainment, index: number) => {
+			{bookmarkeds.map((bookmark, index: number) => {
 				return (
 					<Card cardClass="movies" key={index}>
 						<span className="bookmarkIcon">
@@ -53,7 +52,7 @@ const BookmarkedCards = () => {
 
 						<img
 							id="bookmarked"
-							src={bookmark.thumbnail.regular.small}
+							src={bookmark.thumbnail?.regular.small}
 							onMouseOver={(e) => {
 								handleMouseOver(e, index);
 							}}
