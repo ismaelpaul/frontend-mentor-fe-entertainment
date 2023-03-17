@@ -12,7 +12,7 @@ import {
 import PlayIcon from '../PlayIcon/PlayIcon';
 import styles from './Trending.module.scss';
 
-export type Entertainment = {
+export interface Entertainment {
 	_id: string;
 	title: string;
 	category: string;
@@ -30,7 +30,7 @@ export type Entertainment = {
 			small: string;
 		};
 	};
-};
+}
 
 const TrendingCards: FC = () => {
 	const [isHovering, setIsHovering] = useState(-1);
