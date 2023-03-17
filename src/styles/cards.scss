@@ -80,6 +80,19 @@
 		right: 0;
 		margin: 0.5rem;
 	}
+	.playIcon {
+		display: none;
+	}
+	.playIconOnHover {
+		display: block;
+		.playIconOverlay {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.4);
+			width: 17.5rem;
+			height: 10.875rem;
+			border-radius: 0.625rem;
+		}
+	}
 	img {
 		width: 10.25rem;
 		height: 6.875rem;
@@ -153,12 +166,6 @@
 		grid-template-columns: repeat(4, 17.5rem);
 		gap: 2.5rem;
 		row-gap: 2rem;
-		.playIcon {
-			display: none;
-		}
-		.playIconOnHover {
-			display: block;
-		}
 
 		img {
 			width: 17.5rem;
