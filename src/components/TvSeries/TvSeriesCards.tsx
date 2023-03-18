@@ -1,20 +1,34 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../redux/store';
 import Card from '../Card/Card';
 import { Entertainment } from '../Trending/TrendingCards';
 import { tvSeriesIcon } from '../../data/icons';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import '../../styles/cards.scss';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, SyntheticEvent, useState } from 'react';
 import PlayIcon from '../PlayIcon/PlayIcon';
+import {
+	addNewBookmark,
+	getEntertainment,
+} from '../../redux/features/entertainment/entertainmentSlice';
 
 const TvSeriesCards = () => {
 	const [isHovering, setIsHovering] = useState(-1);
 	const [elementHovered, setElementHovered] = useState('');
 
+	const dispatch = useDispatch<AppDispatch>();
+
 	const { entertainments } = useSelector(
 		(state: RootState) => state.entertainments
 	);
+
+	const handleBookmarking = async (e: SyntheticEvent, id: string) => {
+		e.preventDefault();
+
+		const newBookmark = await dispatch(getEntertainment(id));
+
+		dispatch(addNewBookmark(newBookmark.payload));
+	};
 
 	const handleMouseOver = (e: MouseEvent<HTMLSpanElement>, index: number) => {
 		const target = e.target as HTMLSpanElement;
@@ -33,7 +47,12 @@ const TvSeriesCards = () => {
 				if (entertainment.category === 'TV Series') {
 					return (
 						<Card cardClass="tv-series" key={index}>
-							<span className="bookmarkIcon">
+							<span
+								className="bookmarkIcon"
+								onClick={(e) => {
+									handleBookmarking(e, entertainment._id);
+								}}
+							>
 								<BookmarkIcon />
 							</span>
 
