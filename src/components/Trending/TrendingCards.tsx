@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from '../../redux/store';
 import Card from '../Card/Card';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import { moviesIcon, tvSeriesIcon } from '../../data/icons';
-import { FC, MouseEvent, useState } from 'react';
+import { FC, MouseEvent, SyntheticEvent, useState } from 'react';
 import {
 	addNewBookmark,
 	getEntertainment,
@@ -42,13 +42,11 @@ const TrendingCards: FC = () => {
 		(state: RootState) => state.entertainments
 	);
 
-	const newBookmark = useSelector(
-		(state: RootState) => state.entertainments.singleEntertainment
-	);
+	const handleBookmarking = async (e: SyntheticEvent, id: string) => {
+		e.preventDefault();
 
-	const handleBookmarking = async (id: string, newBookmark: NewBookmark) => {
-		await dispatch(getEntertainment(id));
-		await dispatch(addNewBookmark(newBookmark));
+		const newBookmark = await dispatch(getEntertainment(id));
+		dispatch(addNewBookmark(newBookmark.payload));
 	};
 
 	const handleMouseOver = (e: MouseEvent<HTMLSpanElement>, index: number) => {
@@ -70,8 +68,8 @@ const TrendingCards: FC = () => {
 						<Card cardClass="trending" key={index}>
 							<span
 								className={styles.bookmarkIcon}
-								onClick={() => {
-									handleBookmarking(entertainment._id, newBookmark);
+								onClick={(e) => {
+									handleBookmarking(e, entertainment._id);
 								}}
 							>
 								<BookmarkIcon />

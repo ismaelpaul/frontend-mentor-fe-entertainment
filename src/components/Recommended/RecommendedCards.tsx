@@ -7,10 +7,9 @@ import { Entertainment } from '../Trending/TrendingCards';
 import {
 	addNewBookmark,
 	getEntertainment,
-	NewBookmark,
 } from '../../redux/features/entertainment/entertainmentSlice';
 import PlayIcon from '../PlayIcon/PlayIcon';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, SyntheticEvent, useState } from 'react';
 import '../../styles/cards.scss';
 
 const RecommendedCards = () => {
@@ -23,13 +22,12 @@ const RecommendedCards = () => {
 		(state: RootState) => state.entertainments
 	);
 
-	const newBookmark = useSelector(
-		(state: RootState) => state.entertainments.singleEntertainment
-	);
+	const handleBookmarking = async (e: SyntheticEvent, id: string) => {
+		e.preventDefault();
 
-	const handleBookmarking = async (id: string, newBookmark: NewBookmark) => {
-		await dispatch(getEntertainment(id));
-		await dispatch(addNewBookmark(newBookmark));
+		const newBookmark = await dispatch(getEntertainment(id));
+
+		dispatch(addNewBookmark(newBookmark.payload));
 	};
 
 	const handleMouseOver = (e: MouseEvent<HTMLSpanElement>, index: number) => {
@@ -51,8 +49,8 @@ const RecommendedCards = () => {
 						<Card cardClass="recommended" key={index}>
 							<span
 								className="bookmarkIcon"
-								onClick={() => {
-									handleBookmarking(entertainment._id, newBookmark);
+								onClick={(e) => {
+									handleBookmarking(e, entertainment._id);
 								}}
 							>
 								<BookmarkIcon />
