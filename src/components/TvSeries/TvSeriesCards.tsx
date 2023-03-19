@@ -22,9 +22,7 @@ const TvSeriesCards = () => {
 		(state: RootState) => state.entertainments
 	);
 
-	const handleBookmarking = async (e: SyntheticEvent, id: string) => {
-		e.preventDefault();
-
+	const handleBookmarking = async (id: string) => {
 		const newBookmark = await dispatch(getEntertainment(id));
 
 		dispatch(addNewBookmark(newBookmark.payload));
@@ -47,14 +45,15 @@ const TvSeriesCards = () => {
 				if (entertainment.category === 'TV Series') {
 					return (
 						<Card cardClass="tv-series" key={index}>
-							<span
+							<button
+								type="button"
 								className="bookmarkIcon"
-								onClick={(e) => {
-									handleBookmarking(e, entertainment._id);
+								onClick={() => {
+									handleBookmarking(entertainment._id);
 								}}
 							>
 								<BookmarkIcon />
-							</span>
+							</button>
 
 							<span
 								onMouseOut={handleMouseOut}

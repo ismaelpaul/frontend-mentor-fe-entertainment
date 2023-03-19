@@ -31,9 +31,9 @@ const BookmarkedCards = () => {
 			{bookmarkeds.map((bookmark, index: number) => {
 				return (
 					<Card cardClass="movies" key={index}>
-						<span className="bookmarkIcon">
+						<button className="bookmarkIcon">
 							<BookmarkIcon />
-						</span>
+						</button>
 
 						<span
 							onMouseOut={handleMouseOut}

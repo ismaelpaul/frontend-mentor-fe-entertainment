@@ -42,9 +42,7 @@ const TrendingCards: FC = () => {
 		(state: RootState) => state.entertainments
 	);
 
-	const handleBookmarking = async (e: SyntheticEvent, id: string) => {
-		e.preventDefault();
-
+	const handleBookmarking = async (id: string) => {
 		const newBookmark = await dispatch(getEntertainment(id));
 		dispatch(addNewBookmark(newBookmark.payload));
 	};
@@ -66,14 +64,15 @@ const TrendingCards: FC = () => {
 				if (entertainment.isTrending) {
 					return (
 						<Card cardClass="trending" key={index}>
-							<span
+							<button
+								type="button"
 								className={styles.bookmarkIcon}
-								onClick={(e) => {
-									handleBookmarking(e, entertainment._id);
+								onClick={() => {
+									handleBookmarking(entertainment._id);
 								}}
 							>
 								<BookmarkIcon />
-							</span>
+							</button>
 							<div className={styles.infoWrapper}>
 								<div className={styles.info}>
 									<p>{entertainment.year}</p>

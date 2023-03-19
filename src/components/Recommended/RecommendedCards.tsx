@@ -9,7 +9,7 @@ import {
 	getEntertainment,
 } from '../../redux/features/entertainment/entertainmentSlice';
 import PlayIcon from '../PlayIcon/PlayIcon';
-import { MouseEvent, SyntheticEvent, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import '../../styles/cards.scss';
 
 const RecommendedCards = () => {
@@ -22,9 +22,7 @@ const RecommendedCards = () => {
 		(state: RootState) => state.entertainments
 	);
 
-	const handleBookmarking = async (e: SyntheticEvent, id: string) => {
-		e.preventDefault();
-
+	const handleBookmarking = async (id: string) => {
 		const newBookmark = await dispatch(getEntertainment(id));
 
 		dispatch(addNewBookmark(newBookmark.payload));
@@ -47,14 +45,15 @@ const RecommendedCards = () => {
 				if (!entertainment.isTrending) {
 					return (
 						<Card cardClass="recommended" key={index}>
-							<span
+							<button
+								type="button"
 								className="bookmarkIcon"
-								onClick={(e) => {
-									handleBookmarking(e, entertainment._id);
+								onClick={() => {
+									handleBookmarking(entertainment._id);
 								}}
 							>
 								<BookmarkIcon />
-							</span>
+							</button>
 
 							<span
 								onMouseOut={handleMouseOut}
