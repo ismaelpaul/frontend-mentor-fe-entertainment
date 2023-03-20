@@ -5,7 +5,7 @@ import { Entertainment } from '../Trending/TrendingCards';
 import { tvSeriesIcon } from '../../data/icons';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import '../../styles/cards.scss';
-import { MouseEvent, SyntheticEvent, useState } from 'react';
+import { useState } from 'react';
 import PlayIcon from '../PlayIcon/PlayIcon';
 import {
 	addNewBookmark,
@@ -14,7 +14,6 @@ import {
 
 const TvSeriesCards = () => {
 	const [isHovering, setIsHovering] = useState(-1);
-	const [elementHovered, setElementHovered] = useState('');
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -28,15 +27,12 @@ const TvSeriesCards = () => {
 		dispatch(addNewBookmark(newBookmark.payload));
 	};
 
-	const handleMouseOver = (e: MouseEvent<HTMLSpanElement>, index: number) => {
-		const target = e.target as HTMLSpanElement;
+	const handleMouseOver = (index: number) => {
 		setIsHovering(index);
-		setElementHovered(target.id);
 	};
 
 	const handleMouseOut = () => {
 		setIsHovering(-1);
-		setElementHovered('');
 	};
 
 	return (
@@ -64,19 +60,19 @@ const TvSeriesCards = () => {
 								<span
 									id="tv-series"
 									className="playIconOverlay"
-									onMouseOver={(e) => {
-										handleMouseOver(e, index);
+									onMouseOver={() => {
+										handleMouseOver(index);
 									}}
 								>
-									<PlayIcon elementHovered={elementHovered} />
+									<PlayIcon />
 								</span>
 							</span>
 
 							<img
 								id="tv-series"
 								src={entertainment.thumbnail.regular.small}
-								onMouseOver={(e) => {
-									handleMouseOver(e, index);
+								onMouseOver={() => {
+									handleMouseOver(index);
 								}}
 							/>
 							<div className="infoWrapper">

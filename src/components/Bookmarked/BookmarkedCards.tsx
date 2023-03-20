@@ -4,26 +4,22 @@ import { RootState } from '../../redux/store';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import Card from '../Card/Card';
 import '../../styles/cards.scss';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 import PlayIcon from '../PlayIcon/PlayIcon';
 
 const BookmarkedCards = () => {
 	const [isHovering, setIsHovering] = useState(-1);
-	const [elementHovered, setElementHovered] = useState('');
 
 	const bookmarkeds = useSelector(
 		(state: RootState) => state.entertainments.bookmarkeds
 	);
 
-	const handleMouseOver = (e: MouseEvent<HTMLSpanElement>, index: number) => {
-		const target = e.target as HTMLSpanElement;
+	const handleMouseOver = (index: number) => {
 		setIsHovering(index);
-		setElementHovered(target.id);
 	};
 
 	const handleMouseOut = () => {
 		setIsHovering(-1);
-		setElementHovered('');
 	};
 
 	return (
@@ -42,19 +38,19 @@ const BookmarkedCards = () => {
 							<span
 								id="bookmarked"
 								className="playIconOverlay"
-								onMouseOver={(e) => {
-									handleMouseOver(e, index);
+								onMouseOver={() => {
+									handleMouseOver(index);
 								}}
 							>
-								<PlayIcon elementHovered={elementHovered} />
+								<PlayIcon />
 							</span>
 						</span>
 
 						<img
 							id="bookmarked"
 							src={bookmark.thumbnail?.regular.small}
-							onMouseOver={(e) => {
-								handleMouseOver(e, index);
+							onMouseOver={() => {
+								handleMouseOver(index);
 							}}
 						/>
 						<div className="infoWrapper">

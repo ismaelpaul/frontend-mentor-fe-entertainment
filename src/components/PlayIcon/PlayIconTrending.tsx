@@ -9,9 +9,9 @@ const playIcon = (
 	</svg>
 );
 
-const PlayIcon = () => {
+const PlayIconTrending = () => {
 	return (
-		<div className={styles.playIconBackground}>
+		<div className={styles.playIconTrendingBackground}>
 			<div className={styles.playIcon}>
 				{playIcon}
 				<p>Play</p>
@@ -20,4 +20,4 @@ const PlayIcon = () => {
 	);
 };
 
-export default PlayIcon;
+export default PlayIconTrending;

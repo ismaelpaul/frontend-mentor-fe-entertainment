@@ -8,8 +8,8 @@
 	display: flex;
 	justify-content: center;
 	position: absolute;
-	top: 5rem;
-	left: 11rem;
+	top: 4rem;
+	left: 5rem;
 	animation: fade-in 0.3s ease 0s 1 normal forwards;
 	cursor: pointer;
 	.playIcon {
@@ -23,10 +23,10 @@
 	}
 }
 
-.playIconBackgroundSmallCards {
+.playIconTrendingBackground {
 	@extend .playIconBackground;
-	top: 4rem;
-	left: 5rem;
+	top: 5rem;
+	left: 11rem;
 }
 
 @keyframes fade-in {

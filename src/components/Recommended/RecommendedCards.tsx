@@ -9,12 +9,11 @@ import {
 	getEntertainment,
 } from '../../redux/features/entertainment/entertainmentSlice';
 import PlayIcon from '../PlayIcon/PlayIcon';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 import '../../styles/cards.scss';
 
 const RecommendedCards = () => {
 	const [isHovering, setIsHovering] = useState(-1);
-	const [elementHovered, setElementHovered] = useState('');
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -28,15 +27,12 @@ const RecommendedCards = () => {
 		dispatch(addNewBookmark(newBookmark.payload));
 	};
 
-	const handleMouseOver = (e: MouseEvent<HTMLSpanElement>, index: number) => {
-		const target = e.target as HTMLSpanElement;
+	const handleMouseOver = (index: number) => {
 		setIsHovering(index);
-		setElementHovered(target.id);
 	};
 
 	const handleMouseOut = () => {
 		setIsHovering(-1);
-		setElementHovered('');
 	};
 
 	return (
@@ -56,6 +52,7 @@ const RecommendedCards = () => {
 							</button>
 
 							<span
+								id="recommended"
 								onMouseOut={handleMouseOut}
 								className={
 									isHovering === index ? 'playIconOnHover' : 'playIcon'
@@ -64,19 +61,19 @@ const RecommendedCards = () => {
 								<span
 									id="recommended"
 									className="playIconOverlay"
-									onMouseOver={(e) => {
-										handleMouseOver(e, index);
+									onMouseOver={() => {
+										handleMouseOver(index);
 									}}
 								>
-									<PlayIcon elementHovered={elementHovered} />
+									<PlayIcon />
 								</span>
 							</span>
 
 							<img
 								id="recommended"
 								src={entertainment.thumbnail.regular.small}
-								onMouseOver={(e) => {
-									handleMouseOver(e, index);
+								onMouseOver={() => {
+									handleMouseOver(index);
 								}}
 							/>
 

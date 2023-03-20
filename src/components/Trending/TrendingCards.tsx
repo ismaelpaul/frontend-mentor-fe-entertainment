@@ -3,14 +3,14 @@ import { AppDispatch, RootState } from '../../redux/store';
 import Card from '../Card/Card';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import { moviesIcon, tvSeriesIcon } from '../../data/icons';
-import { FC, MouseEvent, SyntheticEvent, useState } from 'react';
+import { FC, useState } from 'react';
 import {
 	addNewBookmark,
 	getEntertainment,
-	NewBookmark,
 } from '../../redux/features/entertainment/entertainmentSlice';
-import PlayIcon from '../PlayIcon/PlayIcon';
+
 import styles from './Trending.module.scss';
+import PlayIconTrending from '../PlayIcon/PlayIconTrending';
 
 export interface Entertainment {
 	_id: string;
@@ -34,7 +34,6 @@ export interface Entertainment {
 
 const TrendingCards: FC = () => {
 	const [isHovering, setIsHovering] = useState(-1);
-	const [elementHovered, setElementHovered] = useState('');
 
 	const dispatch = useDispatch<AppDispatch>();
 
@@ -47,15 +46,12 @@ const TrendingCards: FC = () => {
 		dispatch(addNewBookmark(newBookmark.payload));
 	};
 
-	const handleMouseOver = (e: MouseEvent<HTMLSpanElement>, index: number) => {
-		const target = e.target as HTMLSpanElement;
+	const handleMouseOver = (index: number) => {
 		setIsHovering(index);
-		setElementHovered(target.id);
 	};
 
 	const handleMouseOut = () => {
 		setIsHovering(-1);
-		setElementHovered('');
 	};
 
 	return (
@@ -99,20 +95,19 @@ const TrendingCards: FC = () => {
 								}
 							>
 								<span
-									id="trending"
 									className={styles.playIconOverlay}
-									onMouseOver={(e) => {
-										handleMouseOver(e, index);
+									onMouseOver={() => {
+										handleMouseOver(index);
 									}}
 								>
-									<PlayIcon elementHovered={elementHovered} />
+									<PlayIconTrending />
 								</span>
 							</span>
 							<img
 								id="trending"
 								src={entertainment.thumbnail.regular.large}
-								onMouseOver={(e) => {
-									handleMouseOver(e, index);
+								onMouseOver={() => {
+									handleMouseOver(index);
 								}}
 							/>
 						</Card>
