@@ -5,11 +5,12 @@ import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import Card from '../Card/Card';
 import { Entertainment } from '../Trending/TrendingCards';
 import {
-	addNewBookmark,
-	getEntertainment,
+	getBookmarkeds,
+	NewBookmark,
 } from '../../redux/features/entertainment/entertainmentSlice';
 import PlayIcon from '../PlayIcon/PlayIcon';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import BookmarkedIcon from '../BookmarkIcon/BookmarkedIcon';
 import '../../styles/cards.scss';
 
 const RecommendedCards = () => {
@@ -21,11 +22,9 @@ const RecommendedCards = () => {
 		(state: RootState) => state.entertainments
 	);
 
-	const handleBookmarking = async (id: string) => {
-		const newBookmark = await dispatch(getEntertainment(id));
-
-		dispatch(addNewBookmark(newBookmark.payload));
-	};
+	const bookmarkeds = useSelector(
+		(state: RootState) => state.entertainments.bookmarkeds
+	);
 
 	const handleMouseOver = (index: number) => {
 		setIsHovering(index);
@@ -35,21 +34,31 @@ const RecommendedCards = () => {
 		setIsHovering(-1);
 	};
 
+	const checkBookmark = (
+		entertainment: Entertainment,
+		bookmarkeds: NewBookmark[]
+	) => {
+		const bookmarked = bookmarkeds.find(
+			(bookmarked) => bookmarked.title === entertainment.title
+		);
+
+		if (bookmarked) {
+			return <BookmarkedIcon id={bookmarked._id ?? ''} />;
+		}
+		return <BookmarkIcon id={entertainment._id} />;
+	};
+
+	useEffect(() => {
+		dispatch(getBookmarkeds());
+	}, []);
+
 	return (
 		<div className="infoContainer">
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (!entertainment.isTrending) {
 					return (
 						<Card cardClass="recommended" key={index}>
-							<button
-								type="button"
-								className="bookmarkIcon"
-								onClick={() => {
-									handleBookmarking(entertainment._id);
-								}}
-							>
-								<BookmarkIcon />
-							</button>
+							<>{checkBookmark(entertainment, bookmarkeds)}</>
 
 							<span
 								id="recommended"
@@ -68,7 +77,6 @@ const RecommendedCards = () => {
 									<PlayIcon />
 								</span>
 							</span>
-
 							<img
 								id="recommended"
 								src={entertainment.thumbnail.regular.small}
@@ -76,7 +84,6 @@ const RecommendedCards = () => {
 									handleMouseOver(index);
 								}}
 							/>
-
 							<div className="infoWrapper">
 								<div className="info">
 									<p>{entertainment.year}</p>

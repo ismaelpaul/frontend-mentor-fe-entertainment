@@ -1,31 +1,25 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { moviesIcon } from '../../data/icons';
-import { AppDispatch, RootState } from '../../redux/store';
+import { RootState } from '../../redux/store';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import Card from '../Card/Card';
 import { Entertainment } from '../Trending/TrendingCards';
 import '../../styles/cards.scss';
 import { useState } from 'react';
 import PlayIcon from '../PlayIcon/PlayIcon';
-import {
-	addNewBookmark,
-	getEntertainment,
-} from '../../redux/features/entertainment/entertainmentSlice';
+import { NewBookmark } from '../../redux/features/entertainment/entertainmentSlice';
+import BookmarkedIcon from '../BookmarkIcon/BookmarkedIcon';
 
 const MoviesCards = () => {
 	const [isHovering, setIsHovering] = useState(-1);
-
-	const dispatch = useDispatch<AppDispatch>();
 
 	const { entertainments } = useSelector(
 		(state: RootState) => state.entertainments
 	);
 
-	const handleBookmarking = async (id: string) => {
-		const newBookmark = await dispatch(getEntertainment(id));
-
-		dispatch(addNewBookmark(newBookmark.payload));
-	};
+	const bookmarkeds = useSelector(
+		(state: RootState) => state.entertainments.bookmarkeds
+	);
 
 	const handleMouseOver = (index: number) => {
 		setIsHovering(index);
@@ -35,21 +29,27 @@ const MoviesCards = () => {
 		setIsHovering(-1);
 	};
 
+	const checkBookmark = (
+		entertainment: Entertainment,
+		bookmarkeds: NewBookmark[]
+	) => {
+		const bookmarked = bookmarkeds.find(
+			(bookmarked) => bookmarked.title === entertainment.title
+		);
+
+		if (bookmarked) {
+			return <BookmarkedIcon id={bookmarked._id ?? ''} />;
+		}
+		return <BookmarkIcon id={entertainment._id} />;
+	};
+
 	return (
 		<div className="infoContainer">
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (entertainment.category === 'Movie') {
 					return (
 						<Card cardClass="movies" key={index}>
-							<button
-								type="button"
-								className="bookmarkIcon"
-								onClick={() => {
-									handleBookmarking(entertainment._id);
-								}}
-							>
-								<BookmarkIcon />
-							</button>
+							<>{checkBookmark(entertainment, bookmarkeds)}</>
 
 							<span
 								onMouseOut={handleMouseOut}

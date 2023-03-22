@@ -1,16 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import Card from '../Card/Card';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import { moviesIcon, tvSeriesIcon } from '../../data/icons';
 import { FC, useState } from 'react';
-import {
-	addNewBookmark,
-	getEntertainment,
-} from '../../redux/features/entertainment/entertainmentSlice';
+import { NewBookmark } from '../../redux/features/entertainment/entertainmentSlice';
 
 import styles from './Trending.module.scss';
 import PlayIconTrending from '../PlayIcon/PlayIconTrending';
+import BookmarkedIcon from '../BookmarkIcon/BookmarkedIcon';
 
 export interface Entertainment {
 	_id: string;
@@ -35,16 +33,13 @@ export interface Entertainment {
 const TrendingCards: FC = () => {
 	const [isHovering, setIsHovering] = useState(-1);
 
-	const dispatch = useDispatch<AppDispatch>();
-
 	const { entertainments } = useSelector(
 		(state: RootState) => state.entertainments
 	);
 
-	const handleBookmarking = async (id: string) => {
-		const newBookmark = await dispatch(getEntertainment(id));
-		dispatch(addNewBookmark(newBookmark.payload));
-	};
+	const bookmarkeds = useSelector(
+		(state: RootState) => state.entertainments.bookmarkeds
+	);
 
 	const handleMouseOver = (index: number) => {
 		setIsHovering(index);
@@ -54,21 +49,28 @@ const TrendingCards: FC = () => {
 		setIsHovering(-1);
 	};
 
+	const checkBookmark = (
+		entertainment: Entertainment,
+		bookmarkeds: NewBookmark[]
+	) => {
+		const bookmarked = bookmarkeds.find(
+			(bookmarked) => bookmarked.title === entertainment.title
+		);
+
+		if (bookmarked) {
+			return <BookmarkedIcon id={bookmarked._id ?? ''} />;
+		}
+		return <BookmarkIcon id={entertainment._id} />;
+	};
+
 	return (
 		<div className={styles.infoContainer}>
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (entertainment.isTrending) {
 					return (
 						<Card cardClass="trending" key={index}>
-							<button
-								type="button"
-								className={styles.bookmarkIcon}
-								onClick={() => {
-									handleBookmarking(entertainment._id);
-								}}
-							>
-								<BookmarkIcon />
-							</button>
+							<>{checkBookmark(entertainment, bookmarkeds)}</>
+
 							<div className={styles.infoWrapper}>
 								<div className={styles.info}>
 									<p>{entertainment.year}</p>
