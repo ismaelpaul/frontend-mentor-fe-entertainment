@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
 import '../../styles/cards.scss';
 
 type CardProps = {
-	children: ReactNode;
+	children: JSX.Element | JSX.Element[];
 	cardClass: string;
 };
 
