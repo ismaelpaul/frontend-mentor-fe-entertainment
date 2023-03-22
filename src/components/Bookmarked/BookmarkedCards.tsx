@@ -6,6 +6,7 @@ import Card from '../Card/Card';
 import '../../styles/cards.scss';
 import { useState } from 'react';
 import PlayIcon from '../PlayIcon/PlayIcon';
+import BookmarkedIcon from '../BookmarkIcon/BookmarkedIcon';
 
 const BookmarkedCards = () => {
 	const [isHovering, setIsHovering] = useState(-1);
@@ -27,9 +28,7 @@ const BookmarkedCards = () => {
 			{bookmarkeds.map((bookmark, index: number) => {
 				return (
 					<Card cardClass="movies" key={index}>
-						<button className="bookmarkIcon">
-							<BookmarkIcon />
-						</button>
+						<BookmarkedIcon id={bookmark._id} />
 
 						<span
 							onMouseOut={handleMouseOut}
