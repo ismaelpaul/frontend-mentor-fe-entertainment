@@ -11,11 +11,12 @@ import {
 	selectFilteredMovies,
 	selectFilteredTvSeries,
 } from '../../redux/features/entertainment/filterSlice';
-import { AppDispatch, RootState } from '../../redux/store';
+import { RootState } from '../../redux/store';
 import BookmarkIcon from '../BookmarkIcon/BookmarkIcon';
 import Card from '../Card/Card';
 import { Entertainment } from '../Trending/TrendingCards';
 import '../../styles/cards.scss';
+import BookmarkedIcon from '../BookmarkIcon/BookmarkedIcon';
 
 const FilteredCards = () => {
 	const filteredEntertainments = useSelector(selectFilteredEntertainments);
@@ -23,18 +24,32 @@ const FilteredCards = () => {
 	const filteredTvSeries = useSelector(selectFilteredTvSeries);
 	const filteredBookmarks = useSelector(selectFilteredBookmarks);
 
-	const dispatch = useDispatch<AppDispatch>();
-
 	const newBookmark = useSelector(
 		(state: RootState) => state.entertainments.singleEntertainment
 	);
+	const { entertainments } = useSelector(
+		(state: RootState) => state.entertainments
+	);
 
-	const handleBookmarking = async (id: string, newBookmark: NewBookmark) => {
-		await dispatch(getEntertainment(id));
-		await dispatch(addNewBookmark(newBookmark));
-	};
+	const bookmarkeds = useSelector(
+		(state: RootState) => state.entertainments.bookmarkeds
+	);
 
 	const path = window.location.pathname;
+
+	const checkBookmark = (
+		entertainment: Entertainment,
+		bookmarkeds: NewBookmark[]
+	) => {
+		const bookmarked = bookmarkeds.find(
+			(bookmarked) => bookmarked.title === entertainment.title
+		);
+
+		if (bookmarked) {
+			return <BookmarkedIcon id={bookmarked._id ?? ''} />;
+		}
+		return <BookmarkIcon id={entertainment._id} />;
+	};
 
 	return (
 		<div className="infoContainer">
@@ -42,14 +57,8 @@ const FilteredCards = () => {
 				? filteredMovies.map((movie: Entertainment, index) => {
 						return (
 							<Card cardClass="movies" key={index}>
-								<span
-									className="bookmarkIcon"
-									onClick={() => {
-										handleBookmarking(movie._id, newBookmark);
-									}}
-								>
-									<BookmarkIcon />
-								</span>
+								<>{checkBookmark(movie, bookmarkeds)}</>
+
 								<img src={movie.thumbnail.regular.small} />
 								<div className="infoWrapper">
 									<div className="info">
@@ -74,14 +83,8 @@ const FilteredCards = () => {
 				? filteredTvSeries.map((tv: Entertainment, index) => {
 						return (
 							<Card cardClass="tv-series" key={index}>
-								<span
-									className="bookmarkIcon"
-									onClick={() => {
-										handleBookmarking(tv._id, newBookmark);
-									}}
-								>
-									<BookmarkIcon />t
-								</span>
+								<>{checkBookmark(tv, bookmarkeds)}</>
+
 								<img src={tv.thumbnail.regular.small} />
 								<div className="infoWrapper">
 									<div className="info">
@@ -106,14 +109,7 @@ const FilteredCards = () => {
 				? filteredEntertainments.map((entertainment: Entertainment, index) => {
 						return (
 							<Card cardClass="tv-series" key={index}>
-								<span
-									className="bookmarkIcon"
-									onClick={() => {
-										handleBookmarking(entertainment._id, newBookmark);
-									}}
-								>
-									<BookmarkIcon />
-								</span>
+								<>{checkBookmark(entertainment, bookmarkeds)}</>
 								<img src={entertainment.thumbnail.regular.small} />
 								<div className="infoWrapper">
 									<div className="info">
@@ -142,14 +138,7 @@ const FilteredCards = () => {
 				? filteredBookmarks.map((bookmark: Entertainment, index) => {
 						return (
 							<Card cardClass="tv-series" key={index}>
-								<span
-									className="bookmarkIcon"
-									onClick={() => {
-										handleBookmarking(bookmark._id, newBookmark);
-									}}
-								>
-									<BookmarkIcon />
-								</span>
+								<>{checkBookmark(bookmark, bookmarkeds)}</>
 								<img src={bookmark.thumbnail.regular.small} />
 								<div className="infoWrapper">
 									<div className="info">
