@@ -1,17 +1,33 @@
 @use '/src/styles/abstracts' as a;
 
-.iconBackground {
-	width: 2rem;
-	height: 2rem;
-	overflow: hidden;
-	border-radius: 50%;
-	background-color: a.$bg-color-opacity-50;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.bookmarkIcon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 1rem;
+	z-index: 2;
+	.iconBackground {
+		width: 2rem;
+		height: 2rem;
+		overflow: hidden;
+		border-radius: 50%;
+		background-color: a.$bg-color-opacity-50;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: none;
 
+		path {
+			stroke: a.$secondary-color;
+		}
+	}
+}
+
+.iconBookmarked {
+	@extend .iconBackground;
 	path {
-		stroke: a.$secondary-color;
+		fill: white;
+		// stroke: transparent;
 	}
 }
 
