@@ -1,15 +1,20 @@
-import axios from 'axios';
 import { NewBookmark } from '../redux/features/entertainment/entertainmentSlice';
+import axios, { AxiosRequestConfig } from 'axios';
 
-type UserData = {
+interface UserData {
 	email: string;
 	password: string;
-};
+}
+
+interface AxiosConfig extends AxiosRequestConfig {
+	credentials?: string;
+}
 
 const entertainmentApi = axios.create({
 	baseURL: 'http://localhost:9090/api',
 	withCredentials: true,
-});
+	credentials: 'include',
+} as AxiosConfig);
 
 export const getAllEntertainments = async () => {
 	const response = await entertainmentApi.get('/entertainments');
