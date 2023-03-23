@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Bookmarked from '../../components/Bookmarked/Bookmarked';
+import BookmarkedMovies from '../../components/Bookmarked/BookmarkedMovies/BookmarkedMovies';
+import BookmarkedTvSeries from '../../components/Bookmarked/BookmarkedTvSeries/BookmarkedTvSeries';
 import FilteredEntertainments from '../../components/FilteredEntertainments/FilteredEntertainments';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
@@ -50,7 +51,10 @@ const BookmarkedPage = () => {
 			{isSearching ? (
 				<FilteredEntertainments search={search} />
 			) : (
-				<Bookmarked />
+				<>
+					<BookmarkedMovies />
+					<BookmarkedTvSeries />
+				</>
 			)}
 		</>
 	);
