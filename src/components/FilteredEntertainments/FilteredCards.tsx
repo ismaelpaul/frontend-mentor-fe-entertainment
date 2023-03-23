@@ -1,10 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { moviesIcon, tvSeriesIcon } from '../../data/icons';
-import {
-	addNewBookmark,
-	getEntertainment,
-	NewBookmark,
-} from '../../redux/features/entertainment/entertainmentSlice';
+import { NewBookmark } from '../../redux/features/entertainment/entertainmentSlice';
 import {
 	selectFilteredBookmarks,
 	selectFilteredEntertainments,
@@ -23,13 +19,6 @@ const FilteredCards = () => {
 	const filteredMovies = useSelector(selectFilteredMovies);
 	const filteredTvSeries = useSelector(selectFilteredTvSeries);
 	const filteredBookmarks = useSelector(selectFilteredBookmarks);
-
-	const newBookmark = useSelector(
-		(state: RootState) => state.entertainments.singleEntertainment
-	);
-	const { entertainments } = useSelector(
-		(state: RootState) => state.entertainments
-	);
 
 	const bookmarkeds = useSelector(
 		(state: RootState) => state.entertainments.bookmarkeds
