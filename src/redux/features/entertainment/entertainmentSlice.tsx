@@ -19,12 +19,12 @@ interface InitialState {
 
 export interface NewBookmark {
 	_id: string;
-	category?: string;
-	isTrending?: boolean;
-	isBookmarked?: boolean;
-	rating?: string;
-	title?: string;
-	year?: number;
+	category: string;
+	isTrending: boolean;
+	isBookmarked: boolean;
+	rating: string;
+	title: string;
+	year: number;
 	thumbnail?: {
 		regular: {
 			large: string;
