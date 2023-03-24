@@ -10,8 +10,10 @@ interface AxiosConfig extends AxiosRequestConfig {
 	credentials?: string;
 }
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const entertainmentApi = axios.create({
-	baseURL: 'http://localhost:9090/api',
+	baseURL: `${baseUrl}/api`,
 	withCredentials: true,
 	credentials: 'include',
 } as AxiosConfig);
