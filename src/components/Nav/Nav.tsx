@@ -4,12 +4,24 @@ import { NavItems } from './NavItems';
 import profileImage from '../../assets/image-avatar.png';
 import logo from '../../assets/logo.svg';
 import styles from './Nav.module.scss';
+import { logoutUser } from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { SET_LOGIN } from '../../redux/features/auth/authSlice';
 
 type NavProps = {
 	children: ReactNode;
 };
 
 const Nav = ({ children }: NavProps) => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		await logoutUser();
+		dispatch(SET_LOGIN(false));
+		navigate('/login');
+	};
 	return (
 		<div className={styles.container}>
 			<div className={styles.navContainer}>
@@ -21,7 +33,7 @@ const Nav = ({ children }: NavProps) => {
 						return <NavItems key={index} item={item} />;
 					})}
 				</nav>
-				<div className={styles.imageCropper}>
+				<div className={styles.imageCropper} onClick={handleLogout}>
 					<img
 						src={profileImage}
 						alt="Rounded image representing the profile picture of the user"
