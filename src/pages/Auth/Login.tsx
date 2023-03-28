@@ -2,10 +2,12 @@ import { AxiosError } from 'axios';
 import { ChangeEvent, FormEventHandler, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Card from '../../components/Card/Card';
 import { SET_LOGIN } from '../../redux/features/auth/authSlice';
 import '../../styles/buttons.scss';
 import { loginUser } from '../../utils/api';
+import { validateEmail } from '../../utils/utils';
 import styles from './Auth.module.scss';
 
 const Login = () => {
@@ -33,6 +35,9 @@ const Login = () => {
 			setIsError(true);
 		}
 
+		if (!validateEmail(email)) {
+			return toast.error('Please enter a valid email.');
+		}
 		const userData = { email, password };
 
 		setIsLoading(true);
