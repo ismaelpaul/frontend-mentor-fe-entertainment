@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import {
 	addBookmark,
 	deleteBookmark,
@@ -144,7 +145,7 @@ const entertainmentSlice = createSlice({
 				state.message = action.payload;
 			})
 			.addCase(getEntertainment.pending, (state) => {
-				// state.isLoading = true;
+				state.isLoading = true;
 			})
 			.addCase(getEntertainment.fulfilled, (state, action) => {
 				state.isLoading = false;
@@ -158,7 +159,7 @@ const entertainmentSlice = createSlice({
 				state.message = action.payload;
 			})
 			.addCase(getBookmarkeds.pending, (state) => {
-				// state.isLoading = true;
+				state.isLoading = true;
 			})
 			.addCase(getBookmarkeds.fulfilled, (state, action) => {
 				state.isLoading = false;
@@ -172,13 +173,14 @@ const entertainmentSlice = createSlice({
 				state.message = action.payload;
 			})
 			.addCase(addNewBookmark.pending, (state) => {
-				// state.isLoading = true;
+				state.isLoading = true;
 			})
 			.addCase(addNewBookmark.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.isSuccess = true;
 				state.isError = false;
 				state.bookmarkeds.push(action.payload);
+				toast.success('Successfully bookmarked.');
 			})
 			.addCase(addNewBookmark.rejected, (state, action) => {
 				state.isLoading = false;
@@ -192,6 +194,7 @@ const entertainmentSlice = createSlice({
 				state.isLoading = false;
 				state.isSuccess = true;
 				state.isError = false;
+				toast.success('Successfully removed from bookmarks.');
 			})
 			.addCase(deleteSingleBookmark.rejected, (state, action) => {
 				state.isLoading = false;
