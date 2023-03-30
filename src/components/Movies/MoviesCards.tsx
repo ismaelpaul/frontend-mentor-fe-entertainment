@@ -44,7 +44,7 @@ const MoviesCards = () => {
 	};
 
 	return (
-		<div className="infoContainer">
+		<article className="infoContainer">
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (entertainment.category === 'Movie') {
 					return (
@@ -94,7 +94,7 @@ const MoviesCards = () => {
 					);
 				}
 			})}
-		</div>
+		</article>
 	);
 };
 

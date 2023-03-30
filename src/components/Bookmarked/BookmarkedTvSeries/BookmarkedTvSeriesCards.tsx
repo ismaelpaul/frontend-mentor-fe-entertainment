@@ -22,7 +22,7 @@ const BookmarkedTvSeriesCards = () => {
 	};
 
 	return (
-		<div className="infoContainer">
+		<article className="infoContainer">
 			{bookmarkeds.map((bookmark, index: number) => {
 				if (bookmark.category === 'TV Series') {
 					return (
@@ -72,7 +72,7 @@ const BookmarkedTvSeriesCards = () => {
 					);
 				}
 			})}
-		</div>
+		</article>
 	);
 };
 

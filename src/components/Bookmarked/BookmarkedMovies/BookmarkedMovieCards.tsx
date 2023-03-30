@@ -23,7 +23,7 @@ const BookmarkedMovieCards = () => {
 	};
 
 	return (
-		<div className="infoContainer">
+		<article className="infoContainer">
 			{bookmarkeds.map((bookmark, index: number) => {
 				if (bookmark.category === 'Movie') {
 					return (
@@ -77,7 +77,7 @@ const BookmarkedMovieCards = () => {
 					);
 				}
 			})}
-		</div>
+		</article>
 	);
 };
 

@@ -44,7 +44,7 @@ const TvSeriesCards = () => {
 	};
 
 	return (
-		<div className="infoContainer">
+		<article className="infoContainer">
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (entertainment.category === 'TV Series') {
 					return (
@@ -93,7 +93,7 @@ const TvSeriesCards = () => {
 					);
 				}
 			})}
-		</div>
+		</article>
 	);
 };
 

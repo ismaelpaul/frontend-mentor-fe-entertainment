@@ -64,7 +64,7 @@ const TrendingCards: FC = () => {
 	};
 
 	return (
-		<div className={styles.infoContainer}>
+		<article className={styles.infoContainer}>
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (entertainment.isTrending) {
 					return (
@@ -116,7 +116,7 @@ const TrendingCards: FC = () => {
 					);
 				}
 			})}
-		</div>
+		</article>
 	);
 };
 

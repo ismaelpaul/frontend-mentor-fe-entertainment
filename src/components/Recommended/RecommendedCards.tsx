@@ -53,7 +53,7 @@ const RecommendedCards = () => {
 	}, []);
 
 	return (
-		<div className="infoContainer">
+		<article className="infoContainer">
 			{entertainments.map((entertainment: Entertainment, index) => {
 				if (!entertainment.isTrending) {
 					return (
@@ -105,7 +105,7 @@ const RecommendedCards = () => {
 					);
 				}
 			})}
-		</div>
+		</article>
 	);
 };
 

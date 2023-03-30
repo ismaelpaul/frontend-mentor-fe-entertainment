@@ -41,7 +41,7 @@ const FilteredCards = () => {
 	};
 
 	return (
-		<div className="infoContainer">
+		<article className="infoContainer">
 			{path === '/movies'
 				? filteredMovies.map((movie: Entertainment, index) => {
 						return (
@@ -152,7 +152,7 @@ const FilteredCards = () => {
 						);
 				  })
 				: null}
-		</div>
+		</article>
 	);
 };
 
