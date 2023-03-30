@@ -6,9 +6,7 @@ const BookmarkedTvSeries = () => {
 		<section className={styles.bookmarked}>
 			<h1>Bookmarked Tv Series</h1>
 
-			<div>
-				<BookmarkedTvSeriesCards />
-			</div>
+			<BookmarkedTvSeriesCards />
 		</section>
 	);
 };

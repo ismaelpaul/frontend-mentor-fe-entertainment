@@ -6,9 +6,7 @@ const Movies = () => {
 		<section className={styles.movies}>
 			<h1>Movies</h1>
 
-			<div>
-				<MoviesCards />
-			</div>
+			<MoviesCards />
 		</section>
 	);
 };

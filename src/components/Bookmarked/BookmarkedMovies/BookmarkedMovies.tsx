@@ -6,9 +6,7 @@ const BookmarkedMovies = () => {
 		<section className={styles.bookmarked}>
 			<h1>Bookmarked Movies</h1>
 
-			<div>
-				<BookmarkedMovieCards />
-			</div>
+			<BookmarkedMovieCards />
 		</section>
 	);
 };

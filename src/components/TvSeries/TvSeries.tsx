@@ -6,9 +6,7 @@ const TvSeries = () => {
 		<section className={styles.tvSeries}>
 			<h1>TV Series</h1>
 
-			<div>
-				<TvSeriesCards />
-			</div>
+			<TvSeriesCards />
 		</section>
 	);
 };
