@@ -24,7 +24,7 @@ export const getAllEntertainments = async () => {
 		const response = await entertainmentApi.get('/entertainments');
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -33,7 +33,7 @@ export const getAllBookmarkeds = async () => {
 		const response = await entertainmentApi.get('/bookmarks');
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -42,7 +42,7 @@ export const addBookmark = async (newBookmark: NewBookmark) => {
 		const response = await entertainmentApi.post('/bookmarks', newBookmark);
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -52,7 +52,7 @@ export const deleteBookmark = async (id: string) => {
 
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -62,7 +62,7 @@ export const getSingleEntertainment = async (id: string) => {
 
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -76,7 +76,7 @@ export const registerUser = async (userData: UserData) => {
 
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -85,7 +85,7 @@ export const loginUser = async (userData: UserData) => {
 		const response = await entertainmentApi.post('/user/login', userData);
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -94,7 +94,7 @@ export const getLoginStatus = async () => {
 		const response = await entertainmentApi.get('/user/loggedin');
 		return response.data;
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
 
@@ -102,6 +102,6 @@ export const logoutUser = async () => {
 	try {
 		await entertainmentApi.get('/user/logout');
 	} catch (error: any) {
-		toast.error(error.response.data.message);
+		return error.response.data.message;
 	}
 };
