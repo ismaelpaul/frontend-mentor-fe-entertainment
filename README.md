@@ -47,8 +47,8 @@ You can access the link below, create an account or log into an existing account
 ### 1. Clone this repository
 
 ```
-https://github.com/ismaelpaul/frontend-mentor-be-entertainment.git
-cd frontend-mentor-be-entertainment
+https://github.com/ismaelpaul/frontend-mentor-fe-entertainment.git
+cd frontend-mentor-fe-entertainment
 ```
 
 ### 2. Install packages and dependencies
